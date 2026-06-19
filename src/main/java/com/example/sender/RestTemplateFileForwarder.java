@@ -16,14 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * <p>{@link SimpleClientHttpRequestFactory#setChunkSize(int)} enables HTTP chunked
- * transfer encoding (unknown length), keeping memory flat regardless of file size.
- *
- * <p>This is a genuinely different transport from {@code RestClientFileForwarder}
- * (JDK {@code HttpClient}), which is useful for comparing approaches via
- * {@code POST /send?forwarder=resttemplate}.
- */
+
 @Component
 public class RestTemplateFileForwarder implements FileForwarder {
 
