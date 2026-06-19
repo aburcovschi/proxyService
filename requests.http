@@ -1,0 +1,40 @@
+### Sender proxy — IntelliJ HTTP Client requests
+# Example of requests
+#timeout due to intellij has default limit and fails on 10Gb files
+
+### Proxy a file using the RestClient forwarder
+// @connection-timeout 300000ms
+POST http://localhost:8080/send?forwarder=restclient
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="restclientFile"; filename="restClientFile.bin"
+Content-Type: application/octet-stream
+
+< /tmp/test.bin
+--WebAppBoundary--
+
+### Proxy a file using the RestTemplate forwarder
+// @connection-timeout 300000ms
+POST http://localhost:8080/send?forwarder=resttemplate
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="resttemplateFile"; filename="resttemplateFile.bin"
+Content-Type: application/octet-stream
+
+< /tmp/test.bin
+--WebAppBoundary--
+
+### Proxy a file using the HTTP Interface (@HttpExchange) forwarder
+
+// @connection-timeout 300000ms
+POST http://localhost:8080/send?forwarder=httpexchange
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="httpexchangeFile"; filename="httpexchangeFile.bin"
+Content-Type: application/octet-stream
+
+< /tmp/test.bin
+--WebAppBoundary--
